@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  number: 12345678
+  list_id: 
+  status: 正常
+
+two:
+  number: 22345678
+  list_id: 
+  status: 已删除

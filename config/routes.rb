@@ -1,4 +1,14 @@
 Qqlist::Application.routes.draw do
+  #resources :notes
+
+  #resources :qqs
+  
+  resources :qqs, shallow: true do
+    resources :notes
+  end
+
+  resources :lists
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

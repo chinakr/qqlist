@@ -1,0 +1,29 @@
+<%= form_for(@qq) do |f| %>
+  <% if @qq.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@qq.errors.count, "error") %> prohibited this qq from being saved:</h2>
+
+      <ul>
+      <% @qq.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :number %><br>
+    <%= f.text_field :number %>
+  </div>
+  <div class="field">
+    <%= f.label :list %><br>
+    <%= f.text_field :list %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

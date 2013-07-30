@@ -1,0 +1,31 @@
+<h1>Listing qqs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>List</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @qqs.each do |qq| %>
+      <tr>
+        <td><%= qq.number %></td>
+        <td><%= qq.list %></td>
+        <td><%= qq.status %></td>
+        <td><%= link_to 'Show', qq %></td>
+        <td><%= link_to 'Edit', edit_qq_path(qq) %></td>
+        <td><%= link_to 'Destroy', qq, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Qq', new_qq_path %>

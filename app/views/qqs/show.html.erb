@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @qq.number %>
+</p>
+
+<p>
+  <strong>List:</strong>
+  <%= @qq.list %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @qq.status %>
+</p>
+
+<%= link_to 'Edit', edit_qq_path(@qq) %> |
+<%= link_to 'Back', qqs_path %>
