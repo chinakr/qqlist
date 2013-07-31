@@ -16,6 +16,7 @@
   <% if @qq %>
     <div class="qq">
       <p>QQ号<span class="number"><%= @number %></span>位于<span class="list"><%= @qq.list.name %></span></p>
+      <%= button_to '删除', qq_path(@qq), method: :delete %>
       <div class="notes">
         <h3>相关信息</h3>
           <% @qq.note.each do |note| %>

@@ -51,11 +51,10 @@ class QqsController < ApplicationController
   # DELETE /qqs/1
   # DELETE /qqs/1.json
   def destroy
-    @qq.destroy
-    respond_to do |format|
-      format.html { redirect_to qqs_url }
-      format.json { head :no_content }
-    end
+    #@qq.destroy
+    @qq.status = '已删除'
+    @qq.save
+    redirect_to root_path, notice: "QQ号#{@qq.number}已删除。"
   end
 
   private
