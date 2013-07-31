@@ -15,7 +15,7 @@
   <h2>查询结果</h2>
   <% if @qq %>
     <div class="qq">
-      <p>QQ号<span class="number"><%= @number %></span>位于<span class="list"><%= @qq.list.name %></span></p>
+      <p>QQ号<span class="number"><%= @number %></span>位于<span class="list"><%= @qq.list.name %></span><% if @qq.status == '已删除' %>(已删除)<% end %>。</p>
       <%= button_to '删除', qq_path(@qq), method: :delete %>
       <div class="notes">
         <h3>相关信息</h3>
