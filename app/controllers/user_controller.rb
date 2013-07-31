@@ -1,4 +1,6 @@
 class UserController < ApplicationController
+  skip_before_filter :authorize
+  
   def new
   end
 
@@ -11,6 +13,11 @@ class UserController < ApplicationController
     else
       redirect_to login_path, alert: '用户名或密码错误，登录失败。'
     end
+  end
+
+  def destroy
+    session[:username] = nil
+    redirect_to login_path, alert: '您已退出，感谢您的访问。'
   end
 
   private

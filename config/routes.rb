@@ -18,6 +18,7 @@ Qqlist::Application.routes.draw do
   controller :user do
     get 'login' => :new
     post 'login' => :create
+    delete 'logout' => :destroy
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

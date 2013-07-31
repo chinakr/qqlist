@@ -7,8 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <div class="navbar header">
+      <a class="navbar-brand" href="#">QQ黑名单白名单系统</a>
+      <% if session[:username] %>
+        <ul class="nav navbar-nav pull-right">
+          <li><a href="#"><%= session[:username] %></a></li>
+          <li><%= button_to '退出', logout_path, method: :delete, class: 'btn ben-default navbar-btn' %></li>
+        </ul>
+      <% end %>
+    </div><!-- End .navbar -->
 
-<%= yield %>
-
+    <%= yield %>
+  </div>
 </body>
 </html>
