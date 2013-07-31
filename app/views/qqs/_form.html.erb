@@ -12,16 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :number %><br>
+    <%= f.label :number, 'QQ号' %><br>
     <%= f.text_field :number %>
   </div>
   <div class="field">
-    <%= f.label :list %><br>
-    <%= f.text_field :list %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
+    <%= radio_button_tag :list, 'blacklist' %>
+    <%= label_tag :list_blacklist, '黑名单' %>
+    <%= radio_button_tag :list, 'whitelist' %>
+    <%= label_tag :list_whitelist, '白名单' %>
   </div>
   <div class="actions">
     <%= f.submit %>

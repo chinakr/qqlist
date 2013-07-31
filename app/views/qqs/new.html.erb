@@ -1,5 +1,34 @@
-<h1>New qq</h1>
+<form action="<%= qqs_path %>" method="post" class="form-horizontal new-qq">
+  <%= tag :input, type: 'hidden', name: request_forgery_protection_token.to_s, value: form_authenticity_token %>
+  <legend>添加QQ号</legend>
+  <% if @qq.errors.any? %>
+    <div class="alert">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <% @qq.errors.full_messages.each do |error| %>
+        <%= error %><br/>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="form-group number">
+    <label for="number" class="col-lg-1 col-offset-1 control-label">QQ号</label>
+    <div class="col-lg-6">
+      <input type="text" class="form-control" id="number" name="number" />
+    </div>
+  </div><!-- End .number -->
+  <div class="form-group list">
+    <input type="radio" id="list_blacklist" name="list" value="黑名单" checked />
+    <label for="list_blacklist">黑名单</label>
+    <input type="radio" id="list_whitelist" name="list" value="白名单" />
+    <label for="list_whitelist">白名单</label>
+  </div><!-- End .list -->
+  <%= tag :input, type: 'hidden', name: 'status', value: '正常' %>
+  <div class="form-group note">
+    <label for="note">说明</label>
+    <textarea id="note" name="note" class="form-control" rows="3"></textarea>
+  </div><!-- End .note -->
+  <div class="form-group actions">
+    <button type="submit" class="btn btn-primary">添加</button>
+  </div><!-- .actions -->
+</form><!-- End .new-qq -->
 
-<%= render 'form' %>
-
-<%= link_to 'Back', qqs_path %>
+<%= link_to '返回', search_path %>

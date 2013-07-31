@@ -1,6 +1,15 @@
+<% if flash.any? %>
+  <div class="alert">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div><!-- End .alert -->
+  <% flash.each do |name, msg| %>
+    <%= msg %>
+  <% end %>
+<% end %>
 <form action="" method="get" class="form-inline">
   <input type="text" class="form-control" placeholder="请输入要查询的QQ号" id="qq" name="qq" />
   <button type="submit" class="btn btn-primary">查找</button>
+  <%= link_to '添加QQ号', new_qq_path %>
 </form>
 <% if @number %>
   <h2>查询结果</h2>

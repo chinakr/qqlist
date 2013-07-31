@@ -26,14 +26,11 @@ class QqsController < ApplicationController
   def create
     @qq = Qq.new(qq_params)
 
-    respond_to do |format|
-      if @qq.save
-        format.html { redirect_to @qq, notice: 'Qq was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @qq }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @qq.errors, status: :unprocessable_entity }
-      end
+    if @qq.save
+      @qq.note.create note_params
+      redirect_to root_path, notice: "QQ号#{@qq.number}已添加。"
+    else
+      render action: 'new'
     end
   end
 
@@ -69,6 +66,11 @@ class QqsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def qq_params
-      params.require(:qq).permit(:number, :list_id, :status)
+      list = List.find_by_name(params[:list])
+      { :number => params[:number], :list_id => list.id, :status => params[:status] }
+      #params.require(:qq).permit(:number, :list_id, :status)
+    end
+    def note_params
+      { :content => params[:note], :creator => session[:username] }
     end
 end
