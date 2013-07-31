@@ -9,7 +9,8 @@ class UserController < ApplicationController
     password = params[:password]
     if authenticate(username, password)
       session[:username] = username
-      redirect_to qqs_path
+      redirect_to search_path
+      #redirect_to qqs_path
     else
       redirect_to login_path, alert: '用户名或密码错误，登录失败。'
     end
