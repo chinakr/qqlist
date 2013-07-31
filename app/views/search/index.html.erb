@@ -1,0 +1,23 @@
+<form action="" method="get" class="form-inline">
+  <input type="text" class="form-control" placeholder="请输入要查询的QQ号" id="qq" name="qq" />
+  <button type="submit" class="btn btn-primary">查找</button>
+</form>
+<% if @number %>
+  <h2>查询结果</h2>
+  <% if @qq %>
+    <div class="qq">
+      <p>QQ号<span class="number"><%= @number %></span>位于<span class="list"><%= @qq.list.name %></span></p>
+      <div class="notes">
+        <h3>相关信息</h3>
+          <% @qq.note.each do |note| %>
+            <div class="note">
+              <p><%= note.content %></p>
+              <p>用户<span class="user"><%= note.creator %></span>于<span class="data"><%= note.created_at.to_formatted_s(:db) %></span>添加<% if note.created_at != note.updated_at %>，最后更新于<span class="date"><%= note.updated_at.to_formatted_s(:db) %></span><% end %></p>
+            </div>
+          <% end %>
+      </div><!-- End .notes -->
+    </div><!-- End .qq -->
+  <% else %>
+    <p>QQ号<span class="number"><%= @number %></span>未找到！</p>
+  <% end %>
+<% end %>

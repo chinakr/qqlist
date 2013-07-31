@@ -1,10 +1,14 @@
 Qqlist::Application.routes.draw do
-  get "user/new"
-  get "user/create"
+  #get "search/index"
+  #get "user/new"
+  #get "user/create"
   #resources :notes
 
   #resources :qqs
   
+  root 'search#index'
+  get 'search' => 'search#index'
+
   resources :qqs, shallow: true do
     resources :notes
   end
