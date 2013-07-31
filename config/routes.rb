@@ -1,4 +1,6 @@
 Qqlist::Application.routes.draw do
+  get "user/new"
+  get "user/create"
   #resources :notes
 
   #resources :qqs
@@ -8,6 +10,11 @@ Qqlist::Application.routes.draw do
   end
 
   resources :lists
+
+  controller :user do
+    get 'login' => :new
+    post 'login' => :create
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
