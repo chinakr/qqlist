@@ -1,5 +1,5 @@
 class QqsController < ApplicationController
-  before_action :set_qq, only: [:show, :edit, :update, :destroy]
+  before_action :set_qq, only: [:show, :edit, :update, :destroy, :move]
 
   # GET /qqs
   # GET /qqs.json
@@ -49,12 +49,19 @@ class QqsController < ApplicationController
   end
 
   # DELETE /qqs/1
-  # DELETE /qqs/1.json
   def destroy
     #@qq.destroy
     @qq.status = '已删除'
     @qq.save
     redirect_to root_path, notice: "QQ号#{@qq.number}已删除。"
+  end
+
+  # POST /qqs/1/move
+  def move
+    list = List.find_by_name(params[:target])
+    @qq.list = list
+    @qq.save
+    redirect_to root_path(qq: @qq.number)
   end
 
   private

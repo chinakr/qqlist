@@ -11,6 +11,9 @@ Qqlist::Application.routes.draw do
 
   resources :qqs, shallow: true do
     resources :notes
+    member do
+      post 'move'
+    end
   end
 
   resources :lists

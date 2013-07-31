@@ -16,7 +16,15 @@
   <% if @qq %>
     <div class="qq">
       <p>QQ号<span class="number"><%= @number %></span>位于<span class="list"><%= @qq.list.name %></span><% if @qq.status == '已删除' %>(已删除)<% end %>。</p>
-      <%= button_to '删除', qq_path(@qq), method: :delete %>
+      <% unless @qq.status == '已删除' %>
+        <% if @qq.list.name == '黑名单' %><%= button_to '移动到白名单', move_qq_path(@qq, target: '白名单') %><% end %>
+        <% if @qq.list.name == '白名单' %><%= button_to '移动到黑名单', move_qq_path(@qq, target: '黑名单') %><% end %>
+      <% end %>
+      <% if @qq.status == '已删除' %>
+        <%= button_to '恢复' %>
+      <% elsif @qq.status == '正常' %>
+        <%= button_to '删除', qq_path(@qq), method: :delete %>
+      <% end %>
       <div class="notes">
         <h3>相关信息</h3>
           <% @qq.note.each do |note| %>
