@@ -47,3 +47,6 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Use Capistrano for auto deployment
+gem 'capistrano', group: :development
