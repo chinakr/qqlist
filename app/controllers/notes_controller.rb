@@ -23,20 +23,15 @@ class NotesController < ApplicationController
   end
 
   # POST /notes
-  # POST /notes.json
   def create
     @qq = Qq.find(params[:qq_id])
     @note = @qq.note.build(note_params)
     #@note = Note.new(note_params)
 
-    respond_to do |format|
-      if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @note }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
-      end
+    if @note.save
+      redirect_to root_path(qq: @qq.number), notice: "QQ号#{@qq.number}的说明添加成功。"
+    else
+      render action: 'new'
     end
   end
 

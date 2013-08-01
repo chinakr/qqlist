@@ -1,29 +1,18 @@
-<%= form_for([@qq, @note]) do |f| %>
-  <% if @note.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@note.errors.count, "error") %> prohibited this note from being saved:</h2>
-
-      <ul>
-      <% @note.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :qq %><br>
-    <%= f.text_field :qq %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :creator %><br>
-    <%= f.text_field :creator %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+<%= tag :input, type: 'hidden', name: request_forgery_protection_token.to_s, value: form_authenticity_token %>
+<% if @note.errors.any? %>
+  <div class="alert">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <% @note.errors.full_messages.each do |msg| %>
+      <%= msg %><br/>
+    <% end %>
   </div>
 <% end %>
+<input type="hidden" name="note[qq_id]" value="<%= @qq.id %>" />
+<div class="form-group content">
+  <label for="content" class="col-lg-1 col-offset-1 control-label">说明</label>
+  <div class="col-lg-6">
+    <textarea id="content" name="note[content]" class="form-control"></textarea>
+  </div>
+</div><!-- .content -->
+<input type="hidden" name="note[creator]" value="<%= session[:username] %>" />
+
