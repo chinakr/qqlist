@@ -50,3 +50,6 @@ end
 
 # Use Capistrano for auto deployment
 gem 'capistrano', group: :development
+
+# Use MySQL for production environment
+gem 'mysql', group: :deveopment
