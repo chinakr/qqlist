@@ -13,6 +13,7 @@ Qqlist::Application.routes.draw do
     resources :notes
     member do
       post 'move'
+      post 'recover'
     end
   end
 

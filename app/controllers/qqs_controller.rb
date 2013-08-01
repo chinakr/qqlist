@@ -1,5 +1,5 @@
 class QqsController < ApplicationController
-  before_action :set_qq, only: [:show, :edit, :update, :destroy, :move]
+  before_action :set_qq, only: [:show, :edit, :update, :destroy, :move, :recover]
 
   # GET /qqs
   # GET /qqs.json
@@ -60,6 +60,13 @@ class QqsController < ApplicationController
   def move
     list = List.find_by_name(params[:target])
     @qq.list = list
+    @qq.save
+    redirect_to root_path(qq: @qq.number)
+  end
+
+  # POST /qqs/1/recover
+  def recover
+    @qq.status = '正常'
     @qq.save
     redirect_to root_path(qq: @qq.number)
   end

@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Qqlist</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <title>QQ黑名单白名单系统</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= yield :custom_assets %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <div class="container">
     <div class="navbar header">
-      <a class="navbar-brand" href="#">QQ黑名单白名单系统</a>
+      <a class="navbar-brand" href="#">QQ黑名单白名单</a>
       <% if session[:username] %>
         <ul class="nav navbar-nav pull-right">
           <li><a href="#"><%= session[:username] %></a></li>
-          <li><%= button_to '退出', logout_path, method: :delete, class: 'btn ben-default navbar-btn' %></li>
+          <li><%= button_to '退出', logout_path, method: :delete, class: 'btn btn-default navbar-btn' %></li>
         </ul>
       <% end %>
     </div><!-- End .header -->
-
     <%= yield %>
-  </div>
+  </div><!-- End .container -->
 </body>
 </html>
