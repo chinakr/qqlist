@@ -30,7 +30,7 @@ production:
   reconnect: false
   database: qqlist
   pool: 5
-  username: ooo
+  username: qqlist
   password: helloworld
   host: localhost
 
