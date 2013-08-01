@@ -14,7 +14,7 @@ class QqsController < ApplicationController
 
   # GET /qqs/new
   def new
-    @qq = Qq.new
+    @qq = Qq.new(qq_params)
   end
 
   # GET /qqs/1/edit

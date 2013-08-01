@@ -56,6 +56,9 @@
         </div><!-- End .qq -->
       <% else %>
         <p>QQ号<span class="number"><%= @number %></span>未找到！</p>
+        <% unless @number == '' %>
+          <p>马上把它添加到<%= link_to '黑名单', new_qq_path(number: @number, list: '黑名单') %>或<%= link_to '白名单', new_qq_path(number: @number, list: '白名单') %>。</p>
+        <% end %>
       <% end %>
     <% end %>
   </div><!-- End .col-lg-6 -->  

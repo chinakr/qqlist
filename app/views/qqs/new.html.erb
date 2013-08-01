@@ -12,14 +12,14 @@
   <div class="form-group number">
     <label for="number" class="col-lg-1 col-offset-1 control-label">QQ号</label>
     <div class="col-lg-6">
-      <input type="text" class="form-control" id="number" name="number" />
+      <input type="text" class="form-control" id="number" name="number" value="<%= @qq.number %>" />
     </div>
   </div><!-- End .number -->
   <div class="form-group list">
     <div class="col-lg-6 col-offset-2">
-      <input type="radio" id="list_blacklist" name="list" value="黑名单" checked />
+      <input type="radio" id="list_blacklist" name="list" value="黑名单"<% if @qq.list.name == '黑名单' %> checked<% end %> />
       <label for="list_blacklist">黑名单</label>
-      <input type="radio" id="list_whitelist" name="list" value="白名单" />
+      <input type="radio" id="list_whitelist" name="list" value="白名单"<% if @qq.list.name == '白名单' %> checked<% end %> />
       <label for="list_whitelist">白名单</label>
     </div>
   </div><!-- End .list -->
@@ -33,7 +33,7 @@
   <div class="form-group actions">
     <div class="col-lg-6 col-offset-2">
       <button type="submit" class="btn btn-primary">添加</button>
-      <%= link_to '返回', search_path %>
+      <%= link_to '返回', root_path %>
     </div>
   </div><!-- .actions -->
 </form><!-- End .new-qq -->
