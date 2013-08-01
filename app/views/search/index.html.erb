@@ -5,10 +5,10 @@
 <% if flash.any? %>
   <div class="alert">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <% flash.each do |name, msg| %>
+      <%= msg %>
+    <% end %>
   </div><!-- End .alert -->
-  <% flash.each do |name, msg| %>
-    <%= msg %>
-  <% end %>
 <% end %>
 <form action="" method="get" class="form-inline search-form">
   <div class="col-lg-6">
@@ -18,13 +18,13 @@
   </div>
 </form><!-- End .search-form -->
 <div class="clearfix"></div>
-<div class="rows search-result">
+<div class="rows search-result <% if @qq.status == '已删除' %>deleted<% end %>">
   <div class="col-lg-8">
     <% if @number %>
       <h2>查询结果</h2>
       <% if @qq %>
         <div class="qq">
-          <p>QQ号<span class="number"><%= @number %></span>位于<span class="list"><%= @qq.list.name %></span><% if @qq.status == '已删除' %>(已删除)<% end %>。</p>
+          <p class="content">QQ号<span class="number"><%= @number %></span>位于<span class="list"><%= @qq.list.name %></span><% if @qq.status == '已删除' %>(已删除)<% end %>。</p>
           <% unless @qq.status == '已删除' %>
             <% if @qq.list.name == '黑名单' %><%= button_to '移动到白名单', move_qq_path(@qq, target: '白名单') %><% end %>
             <% if @qq.list.name == '白名单' %><%= button_to '移动到黑名单', move_qq_path(@qq, target: '黑名单') %><% end %>

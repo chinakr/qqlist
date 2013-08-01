@@ -5,6 +5,9 @@
 .search-form #qq {
   width: 280px;
 }
+.deleted {
+  color: #CCCCCC;
+}
 .search-result {
   h2 {
     font-size: 1.5em;
@@ -15,6 +18,10 @@
   }
   .qq {
     margin-top: 15px;
+    
+    p.content {
+      font-size: 1.1em;
+    }
 
     span.number, span.list {
       font-weight: bold;
