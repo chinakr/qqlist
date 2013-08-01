@@ -16,19 +16,25 @@
     </div>
   </div><!-- End .number -->
   <div class="form-group list">
-    <input type="radio" id="list_blacklist" name="list" value="黑名单" checked />
-    <label for="list_blacklist">黑名单</label>
-    <input type="radio" id="list_whitelist" name="list" value="白名单" />
-    <label for="list_whitelist">白名单</label>
+    <div class="col-lg-6 col-offset-2">
+      <input type="radio" id="list_blacklist" name="list" value="黑名单" checked />
+      <label for="list_blacklist">黑名单</label>
+      <input type="radio" id="list_whitelist" name="list" value="白名单" />
+      <label for="list_whitelist">白名单</label>
+    </div>
   </div><!-- End .list -->
   <%= tag :input, type: 'hidden', name: 'status', value: '正常' %>
   <div class="form-group note">
-    <label for="note">说明</label>
-    <textarea id="note" name="note" class="form-control" rows="3"></textarea>
+    <label for="note" class="col-lg-1 col-offset-1 control-label">说明</label>
+    <div class="col-lg-6">
+      <textarea id="note" name="note" class="form-control" rows="3"></textarea>
+    </div>
   </div><!-- End .note -->
   <div class="form-group actions">
-    <button type="submit" class="btn btn-primary">添加</button>
+    <div class="col-lg-6 col-offset-2">
+      <button type="submit" class="btn btn-primary">添加</button>
+      <%= link_to '返回', search_path %>
+    </div>
   </div><!-- .actions -->
 </form><!-- End .new-qq -->
 
-<%= link_to '返回', search_path %>
