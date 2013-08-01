@@ -12,7 +12,7 @@
 <% end %>
 <form action="" method="get" class="form-inline search-form">
   <div class="col-lg-6">
-    <input type="text" class="form-control" placeholder="请输入要查询的QQ号" id="qq" name="qq" />
+    <input type="text" class="form-control" placeholder="<%= @number || '请输入要查询的QQ号' %>" id="qq" name="qq" />
     <button type="submit" class="btn btn-primary">查找</button>
     <%= link_to '添加QQ号', new_qq_path %>
   </div>
