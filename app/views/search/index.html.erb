@@ -37,12 +37,13 @@
           <div class="clearfix"></div>
           <div class="notes">
             <h3>相关信息</h3>
-              <% @qq.note.each do |note| %>
-                <div class="note">
-                  <p class="content"><%= note.content %></p>
-                  <p class="meta">用户<span class="user"><%= note.creator %></span>于<span class="date"><%= note.created_at.to_formatted_s(:db) %></span>添加<% if note.created_at != note.updated_at %>，最后更新于<span class="date"><%= note.updated_at.to_formatted_s(:db) %></span><% end %></p>
-                </div>
-              <% end %>
+            <% @qq.note.each do |note| %>
+              <div class="note">
+                <p class="content"><%= note.content %></p>
+                <p class="meta">用户<span class="user"><%= note.creator %></span>于<span class="date"><%= note.created_at.to_formatted_s(:db) %></span>添加<% if note.created_at != note.updated_at %>，最后更新于<span class="date"><%= note.updated_at.to_formatted_s(:db) %></span><% end %></p>
+              </div>
+            <% end %>
+            <%= button_to '添加说明', new_qq_note_path(@qq), method: :get, class: 'more-note' %>
           </div><!-- End .notes -->
         </div><!-- End .qq -->
       <% else %>
