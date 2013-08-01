@@ -11,7 +11,7 @@
 <div class="form-group content">
   <label for="content" class="col-lg-1 col-offset-1 control-label">说明</label>
   <div class="col-lg-6">
-    <textarea id="content" name="note[content]" class="form-control"></textarea>
+    <textarea id="content" name="note[content]" class="form-control"><%= @note.content %></textarea>
   </div>
 </div><!-- .content -->
 <input type="hidden" name="note[creator]" value="<%= session[:username] %>" />

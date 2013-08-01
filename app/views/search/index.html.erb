@@ -40,7 +40,14 @@
             <% @qq.note.each do |note| %>
               <div class="note">
                 <p class="content"><%= note.content %></p>
-                <p class="meta">用户<span class="user"><%= note.creator %></span>于<span class="date"><%= note.created_at.to_formatted_s(:db) %></span>添加<% if note.created_at != note.updated_at %>，最后更新于<span class="date"><%= note.updated_at.to_formatted_s(:db) %></span><% end %></p>
+                <% unless note.creator == session[:username] %>
+                  <p class="meta">用户<span class="user"><%= note.creator %></span>于<span class="date"><%= note.created_at.to_formatted_s(:db) %></span>添加<% if note.created_at != note.updated_at %>，最后更新于<span class="date"><%= note.updated_at.to_formatted_s(:db) %></span><% end %></p>
+                <% else %>
+                  <p class="meta">
+                    您于<span class="date"><%= note.created_at.to_formatted_s(:db) %></span>添加<% if note.created_at != note.updated_at %>，最后更新于<span class="date"><%= note.updated_at.to_formatted_s(:db) %></span><% end %>
+                    <%= link_to '修改', edit_note_path(note.id) %>
+                  </p>
+                <% end %>
               </div>
             <% end %>
             <%= button_to '添加说明', new_qq_note_path(@qq), method: :get, class: 'more-note' %>

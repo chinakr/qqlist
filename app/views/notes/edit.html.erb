@@ -1,6 +1,16 @@
-<h1>Editing note</h1>
+<% content_for :custom_assets do %>
+  <%= stylesheet_link_tag 'note' %>
+<% end %>
 
-<%= render 'form' %>
+<h1>修改QQ号<%= @qq.number %>的说明</h1>
 
-<%= link_to 'Show', @note %> |
-<%= link_to 'Back', qq_notes_path(@note.qq) %>
+<%= form_tag note_path, method: :patch, class: "form-horizontal update-note-form" do %>
+  <legend>修改说明</legend>
+  <%= render 'form' %>
+  <div class="form-group actions">
+    <div class="col-lg-6 col-offset-2">
+      <button type="submit" class="btn btn-primary">修改</button>
+      <%= link_to '返回', root_path(qq: @qq.number) %>
+    </div>
+  </div>
+<% end %>

@@ -20,6 +20,7 @@ class NotesController < ApplicationController
 
   # GET /notes/1/edit
   def edit
+    @qq = Qq.find(@note.qq_id)
   end
 
   # POST /notes
@@ -36,16 +37,13 @@ class NotesController < ApplicationController
   end
 
   # PATCH/PUT /notes/1
-  # PATCH/PUT /notes/1.json
   def update
-    respond_to do |format|
-      if @note.update(note_params)
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
-      end
+    @qq = Qq.find(@note.qq_id)
+    @note.content = note_params[:content]
+    if @note.save
+      redirect_to root_path(qq: @qq.number), notice: "QQ号#{@qq.number}的说明修改成功。"
+    else
+      render action: 'edit'
     end
   end
 
