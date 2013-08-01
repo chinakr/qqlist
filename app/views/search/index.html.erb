@@ -45,7 +45,8 @@
                 <% else %>
                   <p class="meta">
                     您于<span class="date"><%= note.created_at.to_formatted_s(:db) %></span>添加<% if note.created_at != note.updated_at %>，最后更新于<span class="date"><%= note.updated_at.to_formatted_s(:db) %></span><% end %>
-                    <%= link_to '修改', edit_note_path(note.id) %>
+                    <%= link_to '修改', edit_note_path(note) %>
+                    <%= link_to '删除', note_path(note), method: :delete %>
                   </p>
                 <% end %>
               </div>

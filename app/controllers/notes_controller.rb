@@ -48,13 +48,10 @@ class NotesController < ApplicationController
   end
 
   # DELETE /notes/1
-  # DELETE /notes/1.json
   def destroy
+    @qq = Qq.find(@note.qq_id)
     @note.destroy
-    respond_to do |format|
-      format.html { redirect_to qq_notes_url(@note.qq) }
-      format.json { head :no_content }
-    end
+    redirect_to root_path(qq: @qq.number), notice: "QQ号#{@qq.number}的说明##{@note.id}已删除。"
   end
 
   private
