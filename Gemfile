@@ -1,5 +1,5 @@
-#source 'https://rubygems.org'
-source 'http://ruby.taobao.org/'
+source 'https://rubygems.org'
+#source 'http://ruby.taobao.org/'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
@@ -52,4 +52,4 @@ end
 gem 'capistrano', group: :development
 
 # Use MySQL for production environment
-gem 'mysql', group: :deveopment
+gem 'mysql2', group: :deveopment
