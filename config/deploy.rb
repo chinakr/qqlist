@@ -28,6 +28,7 @@ namespace :deploy do
   after 'deploy:update_code', 'deploy:assets_precompile'
   desc 'Precompile assets to public/assets/'
   task :assets_precompile, :roles => :app do
+    run "cd #{release_path}; bundle install"
     run "cd #{release_path}; RAILS_ENV=production bundle exec rake assets:precompile"
   end
 end
